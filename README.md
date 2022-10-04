@@ -2,7 +2,7 @@
 @Author: Akar (Ace) Htut Kaung
 
 ## Overview
-This program implement a highly simplified encrypted file system for use to share the encrypt data for another person to view.<br>
+This program implement a highly simplified encrypted file system in order to use for sharing the encrypt data to another person.<br>
 
 **Use-case:** User-A want to leave encrypted file/s for User-B on a shared File System. Only the User-B would have access to decrypt the data left behind by User-A.
 
