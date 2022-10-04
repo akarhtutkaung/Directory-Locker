@@ -180,11 +180,23 @@ public class lock {
 
       for (int i = 0; i < 8; i += 2) {
          if (args[i].equals("-d")) {
-            directory = args[i + 1];
+            if(args[i + 1].charAt(args[i + 1].length()-1) != '/'){
+               directory = args[i + 1]+"/";
+            } else {
+               directory = args[i + 1];
+            }
          } else if (args[i].equals("-p")) {
-            pubKeyPath = args[i + 1];
+            if(args[i + 1].substring(args[i + 1].length()-4).compareTo(".pub") == 0 ){
+               pubKeyPath = args[i + 1];
+            } else {
+               pubKeyPath = args[i + 1]+".pub";
+            }
          } else if (args[i].equals("-r")) {
-            privKeyPath = args[i + 1];
+            if(args[i + 1].substring(args[i + 1].length()-5).compareTo(".priv") == 0 ){
+               privKeyPath = args[i + 1];
+            } else {
+               privKeyPath = args[i + 1]+".priv";
+            }
          } else if (args[i].equals("-s")) {
             userSubject = args[i + 1];
          } else {

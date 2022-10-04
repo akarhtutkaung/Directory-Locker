@@ -15,19 +15,19 @@ make all
 ### Run
 1. Generate private and public key
     ```
-    java keygen -s [subject] -pub [public key] -priv [private key]
+    java keygen -s [subject] -d [directory] -f [filename]
     ```
     \[subject] : any keyword to re-enter when accessing the lock file<br>
-    \[public key] : public  key path with key name and extension<br>
-    \[private key] : private key path with key name and extension<br>
+    \[directory] : directory path for public and private key<br>
+    \[filename] : filename for public and private key<br>
 
 2. Lock a directory
     ```
     java lock -d [directory] -p [public key] -r [private key] -s [subject]
     ```
     \[directory] : directory path to lock<br>
-    \[public key] : the unlock party public key path with the key name and extension<br>
-    \[private key] : the lock party private key path with the key name and extension<br>
+    \[public key] : the unlock party public key path with the key name<br>
+    \[private key] : the lock party private key path with the key name<br>
     \[subject] : subject inside the unlock party's public key <br>
 
 3. Unlock a directory
@@ -35,8 +35,8 @@ make all
     java unlock -d [directory] -p [public key] -r [private key] -s [subject]
 	```
     \[directory] : directory path to unlock<br>
-    \[public key] : the lock party public key path with the key name and extension<br>
-    \[private key] : the unlock party private key path with the key name and extension<br>
+    \[public key] : the lock party public key path with the key name<br>
+    \[private key] : the unlock party private key path with the key name<br>
     \[subject] : subject inside the lock party public key path<br>
 
 ## Testing

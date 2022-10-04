@@ -62,27 +62,38 @@ public class keygen {
    public static void main(String[] args) throws Exception {
 
       String publicPath = null, privatePath = null;
-
+      String dirPath = null, fileName = null;
       if (args.length < 6) {
-         System.out.println("Usage: java keygen -s [subject] -pub [public key] -priv [private key]");
+         // System.out.println("Usage: java keygen -s [subject] -pub [public key] -priv [private key]");
+         System.out.println("Usage: java keygen -s [subject] -d [directory] -f [filename]");
          System.out.println("[subject]     : any keyword to re-enter when accessing the lock file");
-         System.out.println("[public key]  : public  key path with key name and extension");
-         System.out.println("[private key] : private key path with key name and extension");
+         System.out.println("[directory]   : directory path for public and private key");
+         System.out.println("[filename]    : filename for public and private key");
          System.exit(0);
       }
       for (int i = 0; i < args.length; i += 2) {
          if (args[i].equals("-s")) {
             userSubject = args[i + 1];
-         } else if (args[i].equals("-pub")) {
-            publicPath = args[i + 1];
-         } else if (args[i].equals("-priv")) {
-            privatePath = args[i + 1];
-         } else {
-            System.out.println("Usage: java keygen -s [subject] -pub [public key] -priv [private key]");
+         } else if(args[i].equals("-d")) {
+            if(args[i + 1].charAt(args[i + 1].length()-1) != '/'){
+               dirPath = args[i + 1]+"/";
+            } else {
+               dirPath = args[i + 1];
+            }
+         } else if(args[i].equals("-f")) {
+            fileName = args[i + 1];
+         } 
+         else {
+            System.out.println("Usage: java keygen -s [subject] -d [directory] -f [filename]");
+            System.out.println("[subject]     : any keyword to re-enter when accessing the lock file");
+            System.out.println("[directory]   : directory path for public and private key");
+            System.out.println("[filename]    : filename for public and private key");
             System.exit(0);
          }
       }
 
+      publicPath = dirPath+fileName+".pub";
+      privatePath = dirPath+fileName+".priv";
       KeyPair pair = generateKeyPair();
       PrivateKey priv = pair.getPrivate();
       PublicKey pub = pair.getPublic();
